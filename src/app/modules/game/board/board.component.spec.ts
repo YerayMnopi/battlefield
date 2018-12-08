@@ -19,6 +19,14 @@ describe('BoardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BoardComponent);
     component = fixture.componentInstance;
+    component.board = {
+      name: 'test',
+      dimensions: {
+        width: 5,
+        height: 8
+      },
+      shipsLocations: []
+    };
     fixture.detectChanges();
   });
 
@@ -27,35 +35,16 @@ describe('BoardComponent', () => {
   });
 
   it('should have a board input', () => {
-    expect(component.board).toBeUndefined();
+    expect(component.board).toBeTruthy();
   });
 
   it('should display de board name', () => {
-    component.board = {
-      name: 'test',
-      dimensions: {
-        width: 5,
-        height: 8
-      },
-      shipsLocations: []
-    };
-
-    fixture.detectChanges();
-
     const boardNameHeading: HTMLElement = fixture.debugElement.query(By.css('.board__name')).nativeElement;
 
-    expect(boardNameHeading.innerText).toContain('test');
+    expect(boardNameHeading.innerText).toContain(component.board.name);
   });
 
   it('should build the board matrix', () => {
-    component.board = {
-      name: 'test',
-      dimensions: {
-        width: 5,
-        height: 8
-      },
-      shipsLocations: []
-    };
     const lastFileIndex = component.board.dimensions.height - 1;
     const lastColumnIndex = component.board.dimensions.width - 1;
     component.ngOnChanges();
@@ -71,15 +60,6 @@ describe('BoardComponent', () => {
     let verticalAttackTest: number;
     let horizontalAttackTest: number;
 
-
-    component.board = {
-      name: 'test',
-      dimensions: {
-        width: 5,
-        height: 8
-      },
-      shipsLocations: []
-    };
     const lastFileIndex = component.board.dimensions.height - 1;
     const lastColumnIndex = component.board.dimensions.width - 1;
 
