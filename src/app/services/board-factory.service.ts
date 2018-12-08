@@ -6,9 +6,9 @@ import { Dimensions } from '../models/dimensions';
 
 @Injectable()
 export class BoardFactoryService  implements BoardFactory {
-  smallRange: [number, number] = [10, 30];
-  mediumRange: [number, number] = [40, 60];
-  largeRange: [number, number] = [70, 90];
+  smallRange: [number, number] = [5, 10];
+  mediumRange: [number, number] = [10, 15];
+  largeRange: [number, number] = [15, 20];
 
   constructor(
     private utilsService: UtilsService

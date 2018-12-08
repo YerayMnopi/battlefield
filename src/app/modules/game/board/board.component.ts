@@ -1,14 +1,20 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Board } from '../../../models/board';
+import { ShipLocation } from '../../../models/ship-location';
+import { BoardVisualizationService } from './board-visualization.service';
+
 
 @Component({
   selector: 'app-game-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: ['./board.component.scss'],
+  providers: [
+    BoardVisualizationService
+  ]
 })
 export class BoardComponent implements OnInit, OnChanges {
 
-  matrix: number[][] = [];
+  matrix: boolean[][] = [];
 
   @Input()
   board: Board;
@@ -16,13 +22,15 @@ export class BoardComponent implements OnInit, OnChanges {
   @Output()
   attackEvent = new EventEmitter<[number, number]>();
 
-  constructor() { }
+  constructor(
+    private boardVisualizationService: BoardVisualizationService
+  ) { }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
-    this.buildMatrix();
+    this.matrix = this.boardVisualizationService.getBoardMatrix(this.board);
   }
 
   attack(event) {
@@ -30,12 +38,4 @@ export class BoardComponent implements OnInit, OnChanges {
     this.attackEvent.emit([event.verticalIndex, event.horizontalIndex]);
   }
 
-  private buildMatrix() {
-    const widthArray = Array.from(Array(this.board.dimensions.width).keys());
-    const heigthArray = Array.from(Array(this.board.dimensions.height).keys());
-
-    this.matrix = heigthArray.map((verticalIndex: number) => {
-      return widthArray;
-    });
-  }
 }

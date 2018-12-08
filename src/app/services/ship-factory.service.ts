@@ -5,9 +5,9 @@ import { UtilsService } from './utils.service';
 
 @Injectable()
 export class ShipFactoryService implements ShipFactory {
-  smallRange: [number, number] = [1, 3];
-  mediumRange: [number, number] = [4, 6];
-  largeRange: [number, number] = [7, 9];
+  smallRange: [number, number] = [1, 2];
+  mediumRange: [number, number] = [2, 3];
+  largeRange: [number, number] = [3, 4];
 
   constructor(
     private utilsService: UtilsService

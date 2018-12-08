@@ -10,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import { BoardFactoryService } from './board-factory.service';
+import { ShipFactoryService } from './ship-factory.service';
 
 @Injectable()
 export class BoardService implements BoardServiceInterface {
@@ -20,9 +21,11 @@ export class BoardService implements BoardServiceInterface {
 
   constructor(
     private utilsService: UtilsService,
-    private boardFactoryService: BoardFactoryService
+    private boardFactoryService: BoardFactoryService,
+    private shipFactoryService: ShipFactoryService
   ) {
     this.setBoard(this.boardFactoryService.createSmall());
+    this.setShipLocation(this.shipFactoryService.createSmall());
   }
 
   getBoard(): Board {

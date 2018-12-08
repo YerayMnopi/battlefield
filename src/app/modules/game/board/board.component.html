@@ -4,7 +4,7 @@
     *ngFor="let column of line; let horizontalIndex = index"
     [verticalIndex]="verticalIndex"
     [horizontalIndex]="horizontalIndex"
-    [occupied]="true"
+    [occupied]="column"
     [fired]="false"
     (fireEvent)="attack($event)"></app-game-cell>
 </p>

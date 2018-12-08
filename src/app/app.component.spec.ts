@@ -7,6 +7,7 @@ import { BoardServiceStud } from './studs/board.service.stud';
 import { BoardComponent } from './modules/game/board/board.component';
 import { BoardFactoryService } from './services/board-factory.service';
 import { CellComponent } from './modules/game/cell/cell.component';
+import { ShipFactoryService } from './services/ship-factory.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,7 +20,8 @@ describe('AppComponent', () => {
       providers: [
         BoardService,
         BoardFactoryService,
-        UtilsService
+        UtilsService,
+        ShipFactoryService
       ]
     }).compileComponents();
   }));

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BoardService } from './services/board.service';
 import { UtilsService } from './services/utils.service';
 import { BoardFactoryService } from './services/board-factory.service';
+import { ShipFactoryService } from './services/ship-factory.service';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { BoardFactoryService } from './services/board-factory.service';
   providers: [
     BoardService,
     BoardFactoryService,
-    UtilsService
+    UtilsService,
+    ShipFactoryService
   ],
   bootstrap: [AppComponent]
 })
