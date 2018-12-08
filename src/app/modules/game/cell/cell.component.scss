@@ -1,0 +1,26 @@
+:host {
+  border-left: 1px solid gray;
+  width: 100%;
+
+  &:last-of-type {
+    border-right: 1px solid gray;
+  }
+
+  &:hover {
+    background-color: aqua;
+    cursor: pointer;
+    flex: 2, 0, 1;
+  }
+}
+
+:host(.disabled) {
+  cursor: not-allowed;
+}
+
+:host(.fired) {
+  background-color: navy;
+}
+
+:host(.fired.occupied) {
+  background-color: red;
+}

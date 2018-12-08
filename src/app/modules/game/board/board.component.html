@@ -1,0 +1,10 @@
+<h3 class="board__name">{{board.name}}</h3>
+<p *ngFor="let line of matrix; let verticalIndex = index" class="board__line">
+  <app-game-cell
+    *ngFor="let column of line; let horizontalIndex = index"
+    [verticalIndex]="verticalIndex"
+    [horizontalIndex]="horizontalIndex"
+    [occupied]="true"
+    [fired]="false"
+    (fireEvent)="attack($event)"></app-game-cell>
+</p>
